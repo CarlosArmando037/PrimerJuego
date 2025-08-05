@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://cysssmt1adm3p"]
+
+[ext_resource type="PackedScene" uid="uid://bsqop5yt8hr58" path="res://block.tscn" id="1_11lyv"]
+[ext_resource type="PackedScene" uid="uid://daeb06o8qep06" path="res://player.tscn" id="2_1avuf"]
+
+[node name="wold" type="Node2D"]
+
+[node name="block" parent="." instance=ExtResource("1_11lyv")]
+position = Vector2(216, 336)
+
+[node name="block2" parent="." instance=ExtResource("1_11lyv")]
+position = Vector2(168, 336)
+
+[node name="block3" parent="." instance=ExtResource("1_11lyv")]
+position = Vector2(120, 336)
+
+[node name="block4" parent="." instance=ExtResource("1_11lyv")]
+position = Vector2(72, 336)
+
+[node name="block5" parent="." instance=ExtResource("1_11lyv")]
+position = Vector2(24, 336)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_1avuf")]
+position = Vector2(120, 264)
+
+[node name="block6" parent="." instance=ExtResource("1_11lyv")]
+position = Vector2(264, 288)
+
+[node name="block7" parent="." instance=ExtResource("1_11lyv")]
+position = Vector2(312, 288)
+
+[node name="block8" parent="." instance=ExtResource("1_11lyv")]
+position = Vector2(360, 240)
+
+[node name="block9" parent="." instance=ExtResource("1_11lyv")]
+position = Vector2(408, 240)

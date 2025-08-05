@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://dstkka4e4auq1"]
+
+[ext_resource type="Texture2D" uid="uid://26uwehogodpk" path="res://Free/Enemies/BlueBird/Flying (32x32).png" id="1_iwylk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdtcd"]
+atlas = ExtResource("1_iwylk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk3ip"]
+atlas = ExtResource("1_iwylk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfmyk"]
+atlas = ExtResource("1_iwylk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rise1"]
+atlas = ExtResource("1_iwylk")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acxto"]
+atlas = ExtResource("1_iwylk")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7gcp"]
+atlas = ExtResource("1_iwylk")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d43fg"]
+atlas = ExtResource("1_iwylk")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpj7m"]
+atlas = ExtResource("1_iwylk")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxf6w"]
+atlas = ExtResource("1_iwylk")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oud3g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdtcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk3ip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfmyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rise1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acxto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7gcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d43fg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpj7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxf6w")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6jgh"]
+size = Vector2(28, 23)
+
+[node name="BlueBird" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_oud3g")
+animation = &"Idle"
+frame_progress = 0.449816
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_w6jgh")

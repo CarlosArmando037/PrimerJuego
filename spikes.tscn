@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://beoa6njvr10rp"]
+
+[ext_resource type="Texture2D" uid="uid://dtp6w3d6uj8mv" path="res://Free/Traps/Spikes/Idle.png" id="1_o267x"]
+
+[node name="Spikes" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_o267x")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 8, 3, 2, 4, 2, 7, 8, -8, 8, -5, 2, -4, 2)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://begmy7ouulpe4"]
+
+[sub_resource type="FontFile" id="FontFile_uj6vs"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = SubResource("FontFile_uj6vs")
+text = "SCORE"
