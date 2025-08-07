@@ -1,17 +1,45 @@
 [gd_scene load_steps=2 format=3 uid="uid://begmy7ouulpe4"]
 
-[sub_resource type="FontFile" id="FontFile_uj6vs"]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+[ext_resource type="FontFile" uid="uid://cj2ojd562l1t3" path="res://Free/Other/UltraSquared-Solid.otf" id="1_3pen2"]
 
 [node name="HUD" type="CanvasLayer"]
 
 [node name="ScoreLabel" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_fonts/font = SubResource("FontFile_uj6vs")
-text = "SCORE"
+texture_filter = 1
+offset_right = 75.0
+offset_bottom = 31.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_3pen2")
+theme_override_font_sizes/font_size = 15
+text = "SCORE: "
+
+[node name="StartLabel" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.5
+offset_top = -15.5
+offset_right = 170.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_3pen2")
+theme_override_font_sizes/font_size = 15
+text = "Presiona Espacio para empezar"
+
+[node name="BestScoreLabel" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_bottom = 31.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_3pen2")
+theme_override_font_sizes/font_size = 15
+text = "MEjor Puntuacion: "
