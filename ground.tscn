@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cj4sb00krls1o"]
+[gd_scene load_steps=3 format=3 uid="uid://cj4sb00krls1o"]
+
+[ext_resource type="Texture2D" uid="uid://h4jctclhykk5" path="res://Free/Background/piso_abajo.png" id="1_j6wql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1vhf"]
 size = Vector2(1576, 5)
@@ -8,3 +10,8 @@ size = Vector2(1576, 5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(468, 357.5)
 shape = SubResource("RectangleShape2D_w1vhf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(571, 180)
+scale = Vector2(2.7875, 1)
+texture = ExtResource("1_j6wql")
