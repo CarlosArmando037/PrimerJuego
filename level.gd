@@ -11,7 +11,7 @@ var bird_heights := [200, 390]
 var turtle_heights := [200, 390]
 
 #----------------GAME VARIABLES
-const player_start_pos := Vector2i(-250,300)
+const player_start_pos := Vector2i(-260,300)
 const cam_start_pos := Vector2i(0,180)
 
 var score : int 
@@ -33,7 +33,7 @@ var last_obs
 func _ready():
 	screen_size = get_window().size
 	
-	ground_height = $ground_down.get_node("Sprite2D").texture.get_height()
+	ground_height = $ground_down.position.y
 	new_game()
 	
 func new_game():
@@ -44,17 +44,17 @@ func new_game():
 	$jugador.position = player_start_pos
 	$jugador.velocity = Vector2i(0, 0)
 	$Camera2D.position = cam_start_pos
-	#$ground_top.position = Vector2i(0, 0)
-	$ground_down.position = Vector2i(0, 0)
-	#$ground_mid.position = Vector2i(0, 0)
+	$ground_top.position = Vector2i(0, 125)
+	$ground_down.position = Vector2i(0, 350)
+	$ground_mid.position = Vector2i(0, 235)
 	
 	$HUD.get_node("ScoreLabel").show()
 	
 func _process(delta):
 	if game_running:
 		SPEED = START_SPEED + score / Speed_modifier
-		if SPEED > MAX_SPEED:
-			SPEED = MAX_SPEED
+		#if SPEED > MAX_SPEED:0
+			#SPEED = MAX_SPEED
 			
 		#generar obstaculos funcion
 		generate_obs()

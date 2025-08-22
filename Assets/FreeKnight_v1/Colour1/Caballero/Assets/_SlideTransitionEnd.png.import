@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dikguyvjujoev"
-path="res://.godot/imported/Terrain (16x16).png-dca9e7d7dba2699145ff949a79aaa365.ctex"
+uid="uid://ow2bjmhb1bu6"
+path="res://.godot/imported/_SlideTransitionEnd.png-3a241acd3e2ad5de4c8f2a4d781679c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Free/Terrain/Terrain (16x16).png"
-dest_files=["res://.godot/imported/Terrain (16x16).png-dca9e7d7dba2699145ff949a79aaa365.ctex"]
+source_file="res://Assets/FreeKnight_v1/Colour1/Caballero/Assets/_SlideTransitionEnd.png"
+dest_files=["res://.godot/imported/_SlideTransitionEnd.png-3a241acd3e2ad5de4c8f2a4d781679c6.ctex"]
 
 [params]
 

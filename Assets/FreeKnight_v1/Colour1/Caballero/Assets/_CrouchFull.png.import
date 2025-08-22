@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dikguyvjujoev"
-path="res://.godot/imported/Terrain (16x16).png-dca9e7d7dba2699145ff949a79aaa365.ctex"
+uid="uid://co4t3b8bff0cu"
+path="res://.godot/imported/_CrouchFull.png-b41ddd40327b57cfb8e7b919b9e0156a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Free/Terrain/Terrain (16x16).png"
-dest_files=["res://.godot/imported/Terrain (16x16).png-dca9e7d7dba2699145ff949a79aaa365.ctex"]
+source_file="res://Assets/FreeKnight_v1/Colour1/Caballero/Assets/_CrouchFull.png"
+dest_files=["res://.godot/imported/_CrouchFull.png-b41ddd40327b57cfb8e7b919b9e0156a.ctex"]
 
 [params]
 
