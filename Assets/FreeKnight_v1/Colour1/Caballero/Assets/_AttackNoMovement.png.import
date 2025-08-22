@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dikguyvjujoev"
-path="res://.godot/imported/Terrain (16x16).png-dca9e7d7dba2699145ff949a79aaa365.ctex"
+uid="uid://csl64k5bqe8mo"
+path="res://.godot/imported/_AttackNoMovement.png-2d6f1c7b62cc2c3947bf2f034d67f88c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Free/Terrain/Terrain (16x16).png"
-dest_files=["res://.godot/imported/Terrain (16x16).png-dca9e7d7dba2699145ff949a79aaa365.ctex"]
+source_file="res://Assets/FreeKnight_v1/Colour1/Caballero/Assets/_AttackNoMovement.png"
+dest_files=["res://.godot/imported/_AttackNoMovement.png-2d6f1c7b62cc2c3947bf2f034d67f88c.ctex"]
 
 [params]
 
