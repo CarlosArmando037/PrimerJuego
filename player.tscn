@@ -218,6 +218,8 @@ sprite_frames = SubResource("SpriteFrames_rgsy6")
 animation = &"jump"
 autoplay = "Idle"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimatedSprite2D"]
+
 [node name="CollisionIdle" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 3.5)
 shape = SubResource("RectangleShape2D_d2ncp")
