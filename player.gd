@@ -6,11 +6,18 @@ const DOUBLE_JUMP_SPEED : int = -715   # más fuerte que el primero
 const DASH_TIME : float = 0.25
 const MAX_JUMPS : int = 2              # 1 salto normal + 1 doble salto
 
+var down_count : int = 0    
 var jumps_left := MAX_JUMPS
 var is_dashing := false
 var dash_timer := 0.0
 
+var dowm_timer: float = 0.0
+
+
 func _physics_process(delta):
+	
+	#--------------funcion que sirve para tiempos------
+		
 	# --- DASH ---
 	if is_dashing:
 		velocity.y = 0
@@ -37,6 +44,7 @@ func _physics_process(delta):
 	# --- CONTROLES ---
 	if not get_parent().game_running:
 		$AnimatedSprite2D.play("Idle")
+
 	else:
 		$CollisionIdle.disabled = false
 
@@ -56,10 +64,20 @@ func _physics_process(delta):
 			jumps_left -= 1
 
 		# Agacharse (solo en suelo)
-		elif is_on_floor() and Input.is_action_pressed("ui_down"):
+		elif is_on_floor() and Input.is_action_just_pressed("ui_down"):
 			$AnimatedSprite2D.play("duck")
 			$CollisionIdle.disabled = true
-
+			
+			#down_count = down_count + 1
+			down_count += 1
+			print(down_count)
+			
+			if Input.is_action_just_pressed("ui_down") and down_count == 2:
+				set_collision_mask_value(8,false)
+				await get_tree().create_timer(0.1).timeout
+				set_collision_mask_value(8,true)
+				down_count = 0
+				
 		# Dash (solo con derecha)
 		elif  is_on_floor() and Input.is_action_just_pressed("ui_right"):
 			is_dashing = true
@@ -70,6 +88,7 @@ func _physics_process(delta):
 		# Correr normal (solo en suelo)
 		elif is_on_floor():
 			$AnimatedSprite2D.play("run")
+			
 
 	# --- ANIMACIONES AÉREAS ---
 	if not is_on_floor():
