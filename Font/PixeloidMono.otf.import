@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cj2ojd562l1t3"
-path="res://.godot/imported/UltraSquared-Solid.otf-c249bd050f5941fc8d1595f750764443.fontdata"
+uid="uid://bar3xt3m36k4s"
+path="res://.godot/imported/PixeloidMono.otf-48b9c2ce0cb52e8a9e4ea9d4a61e2cdd.fontdata"
 
 [deps]
 
-source_file="res://Free/Other/UltraSquared-Solid.otf"
-dest_files=["res://.godot/imported/UltraSquared-Solid.otf-c249bd050f5941fc8d1595f750764443.fontdata"]
+source_file="res://Font/PixeloidMono.otf"
+dest_files=["res://.godot/imported/PixeloidMono.otf-48b9c2ce0cb52e8a9e4ea9d4a61e2cdd.fontdata"]
 
 [params]
 
@@ -22,7 +22,7 @@ msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 hinting=1
-subpixel_positioning=1
+subpixel_positioning=4
 keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null

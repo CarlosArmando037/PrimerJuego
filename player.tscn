@@ -1,6 +1,6 @@
 [gd_scene load_steps=47 format=3 uid="uid://daeb06o8qep06"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_4ghiw"]
+[ext_resource type="Script" uid="uid://dr27j0so7oera" path="res://player.gd" id="1_4ghiw"]
 [ext_resource type="Texture2D" uid="uid://xvkbweaoryj6" path="res://Assets/FreeKnight_v1/Colour1/Caballero/Assets/_Idle.png" id="2_1b7pf"]
 [ext_resource type="Texture2D" uid="uid://bd5xac40nxeq1" path="res://Assets/FreeKnight_v1/Colour1/Caballero/Assets/_Dash.png" id="3_7r8fv"]
 [ext_resource type="Texture2D" uid="uid://b4byb881ckkke" path="res://Assets/FreeKnight_v1/Colour1/Caballero/Assets/_SlideFull.png" id="3_dol27"]
