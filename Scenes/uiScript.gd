@@ -21,3 +21,7 @@ func _on_salir_button_pressed() -> void:
 
 func _on_coleccion_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/ColeccionItems.tscn")
+
+
+func _on_opciones_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Opciones.tscn")

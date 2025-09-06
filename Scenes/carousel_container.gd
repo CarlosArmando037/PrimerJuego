@@ -70,3 +70,17 @@ func _right():
 	selected_index += 1
 	if selected_index > position_offset_node.get_child_count()-1:
 		selected_index -= 1
+
+func select_character():
+	if !position_offset_node or position_offset_node.get_child_count() == 0:
+		return
+	
+	var selected = position_offset_node.get_child(selected_index)
+	GameData.selected_character = selected.name  # Guardamos el nombre del personaje
+	
+	print("Personaje seleccionado:", selected.name)
+	get_tree().change_scene_to_file("res://level.tscn")
+	
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_accept"): # Enter, Espacio, etc.
+		select_character()
