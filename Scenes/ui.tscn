@@ -132,5 +132,6 @@ scale = Vector2(5.39316, 6.0339)
 texture = ExtResource("4_smcll")
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer2/IniciarButton" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer2/OpcionesButton" to="." method="_on_opciones_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer2/ColeccionButton" to="." method="_on_coleccion_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer2/SalirButton" to="." method="_on_salir_button_pressed"]
