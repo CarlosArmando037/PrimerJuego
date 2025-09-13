@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://daeb06o8qep06"]
+[gd_scene load_steps=46 format=3 uid="uid://daeb06o8qep06"]
 
 [ext_resource type="Script" uid="uid://dr27j0so7oera" path="res://player.gd" id="1_4ghiw"]
 [ext_resource type="Texture2D" uid="uid://xvkbweaoryj6" path="res://Assets/FreeKnight_v1/Colour1/Caballero/Assets/_Idle.png" id="2_1b7pf"]
@@ -70,10 +70,6 @@ region = Rect2(120, 0, 120, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2fy5"]
 atlas = ExtResource("3_dol27")
 region = Rect2(240, 0, 120, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w1h8s"]
-atlas = ExtResource("3_dol27")
-region = Rect2(360, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g8w5g"]
 atlas = ExtResource("5_oijdd")
@@ -202,9 +198,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_e2fy5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w1h8s")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_g8w5g")
 }],
 "loop": true,
@@ -275,13 +268,14 @@ animations = [{
 "speed": 16.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2ncp"]
-size = Vector2(23.5, 54)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqai0"]
 size = Vector2(53, 22.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2ncp"]
+size = Vector2(23.5, 54)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
+collision_mask = 129
 script = ExtResource("1_4ghiw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -291,14 +285,6 @@ animation = &"duck"
 autoplay = "Idle"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimatedSprite2D"]
-
-[node name="CollisionIdle" type="CollisionShape2D" parent="."]
-position = Vector2(-6.25, 29)
-shape = SubResource("RectangleShape2D_d2ncp")
-
-[node name="CollisionDuck" type="CollisionShape2D" parent="."]
-position = Vector2(5.5, 45)
-shape = SubResource("RectangleShape2D_cqai0")
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ysgym")
@@ -314,3 +300,11 @@ stream = ExtResource("7_ysgym")
 volume_db = -3.75
 pitch_scale = 1.6
 max_polyphony = 2
+
+[node name="CollisionDuck" type="CollisionShape2D" parent="."]
+position = Vector2(5.5, 45)
+shape = SubResource("RectangleShape2D_cqai0")
+
+[node name="CollisionIdle" type="CollisionShape2D" parent="."]
+position = Vector2(-6.25, 29)
+shape = SubResource("RectangleShape2D_d2ncp")

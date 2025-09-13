@@ -6,9 +6,12 @@ const DOUBLE_JUMP_SPEED : int = -715   # más fuerte que el primero
 const DASH_TIME : float = 0.25
 const MAX_JUMPS : int = 2              # 1 salto normal + 1 doble salto
 
+const down_count : int = 0         
+
 var jumps_left := MAX_JUMPS
 var is_dashing := false
 var dash_timer := 0.0
+
 
 func _physics_process(delta):
 	# --- DASH ---
@@ -16,13 +19,14 @@ func _physics_process(delta):
 		velocity.y = 0
 		velocity.x = 0
 		$CollisionIdle.disabled = true
+		$CollisionDuck.disabled = true
 		$AnimatedSprite2D.play("dash")
 
 		dash_timer -= delta
 		if dash_timer <= 0:
 			is_dashing = false
 			$CollisionIdle.disabled = false
-
+			$CollisionDuck.disabled = false
 		move_and_slide()
 		return
 
@@ -37,6 +41,7 @@ func _physics_process(delta):
 	# --- CONTROLES ---
 	if not get_parent().game_running:
 		$AnimatedSprite2D.play("Idle")
+
 	else:
 		$CollisionIdle.disabled = false
 
@@ -59,7 +64,7 @@ func _physics_process(delta):
 		elif is_on_floor() and Input.is_action_pressed("ui_down"):
 			$AnimatedSprite2D.play("duck")
 			$CollisionIdle.disabled = true
-
+			down_count + 1
 		# Dash (solo con derecha)
 		elif  is_on_floor() and Input.is_action_just_pressed("ui_right"):
 			is_dashing = true
@@ -67,10 +72,22 @@ func _physics_process(delta):
 			$AnimatedSprite2D.play("dash")
 			return
 
+
+		elif is_on_floor() and down_count == 1:
+			if Input.is_action_just_pressed("ui_down"):
+				set_collision_mask_value(128,false)
+				
+				set_collision_mask_value(128,true)
+			
+
 		# Correr normal (solo en suelo)
 		elif is_on_floor():
 			$AnimatedSprite2D.play("run")
-
+			
+	if Input.is_action_just_pressed("ui_select"):
+		set_collision_mask_value(8,false)
+		await get_tree().create_timer(0.1).timeout
+		set_collision_mask_value(8,true)
 	# --- ANIMACIONES AÉREAS ---
 	if not is_on_floor():
 		if velocity.y < 0:  # subiendo
