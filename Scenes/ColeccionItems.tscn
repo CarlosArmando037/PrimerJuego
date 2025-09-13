@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://04agccgi36de"]
+
+[ext_resource type="Script" uid="uid://8l6wd7s1l3oy" path="res://Scenes/coleccion_items.gd" id="1_nnl5i"]
+[ext_resource type="FontFile" uid="uid://bvccc7epi7xmu" path="res://Font/PixeloidSans.otf" id="1_ofody"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnl5i"]
+bg_color = Color(0.0627451, 0.0823529, 0.0901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m25cq"]
+bg_color = Color(0.541176, 0.776471, 0.784314, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nnl5i")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nnl5i")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -51.0
+offset_right = 51.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/BoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ofody")
+theme_override_font_sizes/font_size = 20
+text = "Colección de items"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 18.0
+offset_top = 13.0
+offset_right = 36.0
+offset_bottom = 44.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_ofody")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_m25cq")
+text = "<"
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 46.0
+offset_right = -15.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ofody")
+current_tab = 0
+
+[node name="Descubiertos" type="TabBar" parent="CanvasLayer/TabContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ofody")
+theme_override_font_sizes/font_size = 2
+metadata/_tab_index = 0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/TabContainer/Descubiertos"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Todos" type="TabBar" parent="CanvasLayer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ofody")
+metadata/_tab_index = 1
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_regresar_pressed"]
