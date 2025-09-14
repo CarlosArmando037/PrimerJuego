@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cc1iiglx8ppvn"]
+[gd_scene load_steps=9 format=3 uid="uid://cc1iiglx8ppvn"]
 
-[ext_resource type="Script" path="res://level.gd" id="1_a51e3"]
+[ext_resource type="Script" uid="uid://1nr61x8067af" path="res://level.gd" id="1_a51e3"]
 [ext_resource type="PackedScene" uid="uid://daeb06o8qep06" path="res://player.tscn" id="1_cybce"]
 [ext_resource type="PackedScene" uid="uid://drp1ss85t2pvc" path="res://Backgroud.tscn" id="4_775wr"]
 [ext_resource type="PackedScene" uid="uid://begmy7ouulpe4" path="res://hud.tscn" id="5_kveiu"]
 [ext_resource type="PackedScene" uid="uid://vgsoy7b8oqm2" path="res://ground_down.tscn" id="6_lo25j"]
 [ext_resource type="PackedScene" uid="uid://x6alnqjfdeuh" path="res://ground_mid.tscn" id="7_8dqom"]
 [ext_resource type="PackedScene" uid="uid://bublxxvqlm3ew" path="res://ground_top.tscn" id="7_64whx"]
+[ext_resource type="AudioStream" uid="uid://kmjdux5eli0d" path="res://Sonidos/music-for-games-153673.mp3" id="8_cn20x"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_a51e3")
@@ -30,3 +31,7 @@ position = Vector2(-40, 238)
 
 [node name="ground_top" parent="." instance=ExtResource("7_64whx")]
 position = Vector2(180, 121)
+
+[node name="Musica" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_cn20x")
+autoplay = true

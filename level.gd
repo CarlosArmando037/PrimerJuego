@@ -49,7 +49,7 @@ func new_game():
 	$ground_mid.position = Vector2i(0, 235)
 	
 	$HUD.get_node("ScoreLabel").show()
-	
+	$Musica.stop()
 func _process(delta):
 	if game_running:
 		SPEED = START_SPEED + score / Speed_modifier
@@ -75,6 +75,7 @@ func _process(delta):
 	else: 
 		if Input.is_action_pressed("ui_accept"):
 			game_running = true
+			$Musica.play()
 			$HUD.get_node("StartLabel").hide()
 			
 func  generate_obs():
@@ -85,7 +86,7 @@ func  generate_obs():
 		var obs_height = obs.get_node("Sprite2D").texture.get_height()
 		var obs_scale = obs.get_node("Sprite2D").scale
 		var obs_x : int = screen_size.x + score + 300
-		var obs_y : int = screen_size.y - ground_height - (obs_height * obs_scale.y / 2) + 350
+		var obs_y : int = screen_size.y - ground_height - (obs_height * obs_scale.y / 2) + 330 
 		last_obs = obs
 		add_obs(obs, obs_x, obs_y)
 		
