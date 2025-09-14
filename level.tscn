@@ -1,34 +1,36 @@
 [gd_scene load_steps=9 format=3 uid="uid://cc1iiglx8ppvn"]
 
-[ext_resource type="Script" uid="uid://1nr61x8067af" path="res://level.gd" id="1_a51e3"]
+[ext_resource type="Script" path="res://level.gd" id="1_a51e3"]
 [ext_resource type="PackedScene" uid="uid://daeb06o8qep06" path="res://player.tscn" id="1_cybce"]
 [ext_resource type="PackedScene" uid="uid://drp1ss85t2pvc" path="res://Backgroud.tscn" id="4_775wr"]
 [ext_resource type="PackedScene" uid="uid://begmy7ouulpe4" path="res://hud.tscn" id="5_kveiu"]
 [ext_resource type="PackedScene" uid="uid://vgsoy7b8oqm2" path="res://ground_down.tscn" id="6_lo25j"]
 [ext_resource type="PackedScene" uid="uid://x6alnqjfdeuh" path="res://ground_mid.tscn" id="7_8dqom"]
 [ext_resource type="PackedScene" uid="uid://bublxxvqlm3ew" path="res://ground_top.tscn" id="7_64whx"]
-[ext_resource type="PackedScene" uid="uid://c3d0txj6lo4hw" path="res://Scenes/Pausa.tscn" id="8_km5ld"]
+[ext_resource type="PackedScene" uid="uid://bie36regy2ml7" path="res://wall_die.tscn" id="8_mmo43"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_a51e3")
+min_gap = 100
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 181)
 
 [node name="jugador" parent="." instance=ExtResource("1_cybce")]
-position = Vector2(37, 274)
+position = Vector2(381, 280)
+collision_mask = 161
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("4_775wr")]
 
 [node name="HUD" parent="." instance=ExtResource("5_kveiu")]
 
 [node name="ground_down" parent="." instance=ExtResource("6_lo25j")]
-position = Vector2(135, 354)
+position = Vector2(135, 360)
 
 [node name="ground_mid" parent="." instance=ExtResource("7_8dqom")]
-position = Vector2(-40, 238)
+position = Vector2(-40, 240)
 
 [node name="ground_top" parent="." instance=ExtResource("7_64whx")]
-position = Vector2(180, 121)
+position = Vector2(180, 120)
 
-[node name="Pausa" parent="." instance=ExtResource("8_km5ld")]
+[node name="wall_die" parent="." instance=ExtResource("8_mmo43")]

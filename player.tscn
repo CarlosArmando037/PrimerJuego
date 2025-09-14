@@ -1,6 +1,6 @@
-[gd_scene load_steps=47 format=3 uid="uid://daeb06o8qep06"]
+[gd_scene load_steps=50 format=3 uid="uid://daeb06o8qep06"]
 
-[ext_resource type="Script" uid="uid://dr27j0so7oera" path="res://player.gd" id="1_4ghiw"]
+[ext_resource type="Script" path="res://player.gd" id="1_4ghiw"]
 [ext_resource type="Texture2D" uid="uid://xvkbweaoryj6" path="res://Assets/FreeKnight_v1/Colour1/Caballero/Assets/_Idle.png" id="2_1b7pf"]
 [ext_resource type="Texture2D" uid="uid://bd5xac40nxeq1" path="res://Assets/FreeKnight_v1/Colour1/Caballero/Assets/_Dash.png" id="3_7r8fv"]
 [ext_resource type="Texture2D" uid="uid://b4byb881ckkke" path="res://Assets/FreeKnight_v1/Colour1/Caballero/Assets/_SlideFull.png" id="3_dol27"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ow2bjmhb1bu6" path="res://Assets/FreeKnight_v1/Colour1/Caballero/Assets/_SlideTransitionEnd.png" id="5_oijdd"]
 [ext_resource type="AudioStream" uid="uid://c2227i04udwiw" path="res://Sonidos/pixel-jump-319167.mp3" id="7_ysgym"]
 [ext_resource type="AudioStream" uid="uid://m25c5q3m3r3v" path="res://Sonidos/running-soundscape-200116.mp3" id="8_q3u65"]
+[ext_resource type="Texture2D" uid="uid://b6b7ht17eb0dq" path="res://Assets/FreeKnight_v1/Colour1/Caballero/Assets/_Hit.png" id="8_xihsb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h84ut"]
 atlas = ExtResource("2_1b7pf")
@@ -90,6 +91,10 @@ region = Rect2(120, 0, 120, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_26ukw"]
 atlas = ExtResource("5_1bgvu")
 region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gelw0"]
+atlas = ExtResource("8_xihsb")
+region = Rect2(0, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mly6v"]
 atlas = ExtResource("4_s8fxc")
@@ -227,6 +232,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_gelw0")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_mly6v")
 }, {
 "duration": 1.0,
@@ -275,30 +288,39 @@ animations = [{
 "speed": 16.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2ncp"]
-size = Vector2(23.5, 54)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4bc4"]
+size = Vector2(24, 54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqai0"]
-size = Vector2(53, 22.5)
+size = Vector2(29, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2ncp"]
+size = Vector2(14, 48)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+collision_mask = 33
 script = ExtResource("1_4ghiw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_rgsy6")
-animation = &"duck"
+animation = &"hit"
 autoplay = "Idle"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimatedSprite2D"]
+[node name="Collisionworld" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 29)
+shape = SubResource("RectangleShape2D_t4bc4")
 
-[node name="CollisionIdle" type="CollisionShape2D" parent="."]
-position = Vector2(-6.25, 29)
-shape = SubResource("RectangleShape2D_d2ncp")
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 32
 
-[node name="CollisionDuck" type="CollisionShape2D" parent="."]
-position = Vector2(5.5, 45)
+[node name="CollisionDuck" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-6.5, 44)
 shape = SubResource("RectangleShape2D_cqai0")
+
+[node name="CollisionIdle" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-5, 26)
+shape = SubResource("RectangleShape2D_d2ncp")
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ysgym")
@@ -314,3 +336,8 @@ stream = ExtResource("7_ysgym")
 volume_db = -3.75
 pitch_scale = 1.6
 max_polyphony = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
