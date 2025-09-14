@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dylor4fnn7qvp"]
 
-[ext_resource type="Script" path="res://Scenes/uiScript.gd" id="1_2246s"]
+[ext_resource type="Script" uid="uid://cfuoi1qqjlele" path="res://Scenes/uiScript.gd" id="1_2246s"]
 [ext_resource type="FontFile" uid="uid://cettjasordema" path="res://Font/PixeloidSans-Bold.otf" id="2_q7pk6"]
 [ext_resource type="FontFile" uid="uid://bar3xt3m36k4s" path="res://Font/PixeloidMono.otf" id="3_m78vo"]
 [ext_resource type="Texture2D" uid="uid://dk6v4qffdmhnj" path="res://Assets/SHADOW Series - Free Ui/borders/Sprite/border 1.png" id="4_smcll"]
@@ -8,11 +8,11 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xb563"]
 bg_color = Color(0.0627451, 0.0823529, 0.0901961, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5ude"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibotj"]
 bg_color = Color(0.498039, 0.882353, 0.866667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5ude"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nltto"]
 bg_color = Color(0.737255, 0.737255, 0.737255, 1)
@@ -69,61 +69,61 @@ theme_override_constants/separation = 5
 
 [node name="IniciarButton" type="Button" parent="CanvasLayer/VBoxContainer2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_m78vo")
-theme_override_styles/normal = SubResource("StyleBoxFlat_n5ude")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ibotj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n5ude")
 text = "Iniciar"
 
 [node name="OpcionesButton" type="Button" parent="CanvasLayer/VBoxContainer2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_m78vo")
-theme_override_styles/normal = SubResource("StyleBoxFlat_n5ude")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ibotj")
 theme_override_styles/focus = SubResource("StyleBoxFlat_nltto")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ibotj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n5ude")
 text = "Opciones"
 
 [node name="ColeccionButton" type="Button" parent="CanvasLayer/VBoxContainer2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_m78vo")
-theme_override_styles/normal = SubResource("StyleBoxFlat_n5ude")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ibotj")
 theme_override_styles/focus = SubResource("StyleBoxFlat_nltto")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ibotj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n5ude")
 text = "Colección de items"
 
 [node name="ComoJugarButton" type="Button" parent="CanvasLayer/VBoxContainer2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_m78vo")
-theme_override_styles/normal = SubResource("StyleBoxFlat_n5ude")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ibotj")
 theme_override_styles/focus = SubResource("StyleBoxFlat_nltto")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ibotj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n5ude")
 text = "Cómo Jugar"
 
 [node name="CreditosButton" type="Button" parent="CanvasLayer/VBoxContainer2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_m78vo")
-theme_override_styles/normal = SubResource("StyleBoxFlat_n5ude")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ibotj")
 theme_override_styles/focus = SubResource("StyleBoxFlat_nltto")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ibotj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n5ude")
 text = "Créditos"
 
 [node name="SalirButton" type="Button" parent="CanvasLayer/VBoxContainer2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_m78vo")
-theme_override_styles/normal = SubResource("StyleBoxFlat_n5ude")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ibotj")
 theme_override_styles/focus = SubResource("StyleBoxFlat_nltto")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ibotj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n5ude")
 text = "Salir"
 
 [node name="Border1" type="Sprite2D" parent="."]

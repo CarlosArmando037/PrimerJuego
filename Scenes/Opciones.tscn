@@ -27,6 +27,7 @@ bg_color = Color(0.541176, 0.776471, 0.784314, 1)
 bg_color = Color(0.541176, 0.776471, 0.784314, 1)
 
 [node name="Control" type="Popup"]
+process_mode = 3
 size = Vector2i(640, 360)
 visible = true
 script = ExtResource("1_2nry1")
