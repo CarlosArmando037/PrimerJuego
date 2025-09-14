@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://drp1ss85t2pvc"]
+[gd_scene load_steps=3 format=3 uid="uid://drp1ss85t2pvc"]
 
 [ext_resource type="Texture2D" uid="uid://dayu3bmaivsky" path="res://Free/Background/parallax}.png" id="1_b83yc"]
+[ext_resource type="Texture2D" uid="uid://bxo4m4tl4hu8n" path="res://Assets/Pixel Art Platformer - Village Props v2.3.0/pixel art background.png" id="2_7ahdh"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 
@@ -9,6 +10,12 @@ motion_scale = Vector2(0.6, 0.6)
 motion_mirroring = Vector2(640, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+visible = false
 scale = Vector2(1.79167, 1.67)
 texture = ExtResource("1_b83yc")
 centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(320, 176)
+scale = Vector2(0.416667, 0.359375)
+texture = ExtResource("2_7ahdh")

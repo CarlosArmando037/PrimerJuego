@@ -3,9 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://d0xekr817f8q" path="res://Free/Enemies/Rino/Idle (52x34).png" id="1_i4w0v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sd4gg"]
-size = Vector2(43, 27)
+size = Vector2(34, 20)
 
-[node name="Area2D" type="Area2D"]
+[node name="Area2D" type="Area2D" groups=["enemigos"]]
+collision_layer = 33
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_i4w0v")
@@ -13,5 +14,5 @@ region_enabled = true
 region_rect = Rect2(262, 6, 48, 28)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0.5)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_sd4gg")

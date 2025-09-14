@@ -2,13 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://dtp6w3d6uj8mv" path="res://Free/Traps/Spikes/Idle.png" id="1_o267x"]
 
-[node name="Spikes" type="Area2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("1_o267x")
+[node name="Spikes" type="Area2D" groups=["enemigos"]]
+collision_layer = 33
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(3.90625, -0.2125)
 scale = Vector2(1.3125, 2.0625)
 polygon = PackedVector2Array(-2.21429, 7.86061, 2.35714, 1.55758, 7, 8, -15.1667, 7.86061, -9.83333, 1.55758, -4.5, 7.86061)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_o267x")
