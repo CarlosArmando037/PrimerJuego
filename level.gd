@@ -35,7 +35,7 @@ func _ready():
 	
 	ground_height = $ground_down.position.y
 	new_game()
-	
+
 func new_game():
 	score = 0
 	show_Score()

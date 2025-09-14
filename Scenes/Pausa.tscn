@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3d0txj6lo4hw"]
+
+[ext_resource type="FontFile" uid="uid://bar3xt3m36k4s" path="res://Font/PixeloidMono.otf" id="1_7bxi4"]
+[ext_resource type="Script" uid="uid://ccc3pqm3aae35" path="res://Scenes/pausa.gd" id="1_8bxyt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bxyt"]
+bg_color = Color(0.498039, 0.882353, 0.866667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibnve"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Pausa" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_8bxyt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.0823529, 0.0901961, 0.690196)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+offset_left = 248.0
+offset_top = 104.0
+offset_right = 432.0
+offset_bottom = 272.0
+theme_override_constants/separation = 20
+
+[node name="ContinuarButton" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_7bxi4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8bxyt")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ibnve")
+text = "Continuar"
+
+[node name="OpcionesButton" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_7bxi4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8bxyt")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ibnve")
+text = "Opciones"
+
+[node name="SalirButton" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_7bxi4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8bxyt")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ibnve")
+text = "Salir"
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/ContinuarButton" to="." method="_on_continuar_button_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/OpcionesButton" to="." method="_on_opciones_button_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/SalirButton" to="." method="_on_salir_button_pressed"]
