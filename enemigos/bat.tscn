@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bysiriwevmbji"]
+
+[ext_resource type="Texture2D" uid="uid://bqgdfkbdpjshx" path="res://Free/Enemies/Bat/Flying (46x30).png" id="1_uui3a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhxq8"]
+size = Vector2(42, 17)
+
+[node name="Area2D" type="Area2D" groups=["enemigos"]]
+collision_layer = 33
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uui3a")
+region_enabled = true
+region_rect = Rect2(0, 0, 45, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -0.5)
+shape = SubResource("RectangleShape2D_lhxq8")

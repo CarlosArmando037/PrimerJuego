@@ -26,21 +26,12 @@ knockback_time = 0.3
 [node name="HUD" parent="." instance=ExtResource("5_kveiu")]
 
 [node name="ground_down" parent="." instance=ExtResource("6_lo25j")]
-position = Vector2(-180, 360)
-
-[node name="ground_down2" parent="." instance=ExtResource("6_lo25j")]
-position = Vector2(1804, 360)
+position = Vector2(135, 360)
 
 [node name="ground_mid" parent="." instance=ExtResource("7_8dqom")]
-position = Vector2(-180, 240)
-
-[node name="ground_mid2" parent="." instance=ExtResource("7_8dqom")]
-position = Vector2(1932, 240)
+position = Vector2(-40, 240)
 
 [node name="ground_top" parent="." instance=ExtResource("7_64whx")]
-position = Vector2(-180, 120)
-
-[node name="ground_top2" parent="." instance=ExtResource("7_64whx")]
-position = Vector2(1964, 120)
+position = Vector2(180, 120)
 
 [node name="wall_die" parent="." instance=ExtResource("8_mmo43")]
