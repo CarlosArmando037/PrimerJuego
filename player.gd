@@ -73,7 +73,6 @@ func _physics_process(delta):
 		elif is_on_floor() and Input.is_action_just_pressed("ui_down"):
 			$AnimatedSprite2D.play("duck")
 
-
 			down_count += 1
 			down_timer = DOWN_RESET_TIME   # reinicia el temporizador
 			print("down_count =", down_count)
@@ -106,24 +105,34 @@ func _physics_process(delta):
 	move_and_slide()
 	
 
+@export var invulnerable_time: float = 1.0
+var invulnerable: bool = false # tiempo que retrocede e invulnerable
 @export var knockback_speed: float = -200
-@export var knockback_time: float = 0.3  # tiempo que retrocede e invulnerable
+@export var knockback_time: float = 0.3
 
 func _on_area_2d_area_entered(area):
-	if area.is_in_group("enemigos"):
+	if area.is_in_group("enemigos") and not invulnerable:
+		invulnerable = true
 		print("🔥 Detecté un enemigo con el Area2D")
 		$AnimatedSprite2D.play("hit")
-		$Area2D/CollisionIdle.set_deferred("disabled", true)
-		$Area2D/CollisionDuck.set_deferred("disabled", true)
-		##position.x -= 50
-		
+
+		# knockback corto
 		var timer = knockback_time
 		while timer > 0:
 			position.x += knockback_speed * get_process_delta_time()
 			timer -= get_process_delta_time()
-			await  get_tree().process_frame
-		
+			await get_tree().process_frame
+
+		# activar invulnerabilidad
+		$Area2D/CollisionIdle.set_deferred("disabled", true)
+		$Area2D/CollisionDuck.set_deferred("disabled", true)
+
+		await get_tree().create_timer(invulnerable_time).timeout
+
 		$Area2D/CollisionIdle.set_deferred("disabled", false)
 		$Area2D/CollisionDuck.set_deferred("disabled", false)
-		pass # Replace with function body.
-
+		invulnerable = false
+		
+	elif area.is_in_group("die instant"):
+		await get_tree().process_frame
+		get_tree().change_scene_to

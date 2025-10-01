@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwg4c7ij4km3w"]
+
+[ext_resource type="Texture2D" uid="uid://4wox36f6h26r" path="res://Free/Enemies/AngryPig/Walk (36x30).png" id="1_gsrr7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ha5d8"]
+size = Vector2(19, 20)
+
+[node name="Area2D" type="Area2D" groups=["enemigos"]]
+collision_layer = 33
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gsrr7")
+region_enabled = true
+region_rect = Rect2(0, 0, 34, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_ha5d8")
