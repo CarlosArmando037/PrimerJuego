@@ -12,9 +12,9 @@ var lane_middle = preload("res://ground_mid.tscn")
 var lane_upper = preload("res://ground_top.tscn")
 
 var lanes = {
-	"lower": 320,   # Carril inferior (cueva)
-	"middle": 206,  # Carril intermedio
-	"upper": 95     # Carril superior (cielo)
+	"lower": 320,
+	"middle": 206,
+	"upper": 95
 }
 
 var obstacles_by_lane = {
@@ -36,12 +36,7 @@ var obstacles_by_lane = {
 @export var level_Lenght : int = 2000
 var progress : int = 0
 
-#---------------- Carriles disponibles (Y)
-var top_lane := [95]
-var mid_lane := [206]
-var bot_lane := [320]
-
-# Aparición de obstáculos
+#---------------- Aparición de obstáculos
 @export var min_gap : int = 150
 @export var max_gap : int = 300
 
@@ -50,7 +45,6 @@ var score : int
 const Score_modifier : int = 30
 var SPEED : float
 
-# Velocidad inicial 
 @export var START_SPEED : float = 5.0
 const MAX_SPEED : int = 25
 const Speed_modifier : int = 5000
@@ -86,8 +80,11 @@ func _process(delta):
 		$wall_die.position.x += SPEED
 		score += SPEED
 		
-		#generar obstaculos funcion
+		# generar obstáculos normalmente
 		generate_obs()
+		
+		# asegurar que todos los carriles tengan enemigos
+		ensure_enemies_per_lane()
 		
 		# Actualización de suelos
 		var ground_down_segments = [$ground_down, $ground_down2]
@@ -117,28 +114,32 @@ func _process(delta):
 
 func generate_obs():
 	if last_obs == null or last_obs.position.x < $Camera2D.position.x + randi_range(min_gap, max_gap):
-		var count = randi_range(1, max_spawn)
-		var obs_x_base : int = screen_size.x + $Camera2D.position.x + min_gap
+		var lane_keys = ["lower", "middle", "upper"]
+		var lane_name = lane_keys[randi() % lane_keys.size()]
+		var lane_y = lanes[lane_name]
 		
-		for i in range(count):
-			# Elegir carril al azar
-			var lane_keys = ["lower", "middle", "upper"]
-			var lane_name = lane_keys[randi() % lane_keys.size()]
-			var lane_y = lanes[lane_name]
-			
-			# Elegir tipo de obstáculo
-			var type = "air" if randf() < 0.4 else "ground"
-			if obstacles_by_lane[lane_name][type].size() == 0:
-				type = "air"
-			
-			# Instanciar obstáculo
-			var obs_type = obstacles_by_lane[lane_name][type][randi() % obstacles_by_lane[lane_name][type].size()]
-			var obs = obs_type.instantiate()
-			var obs_y = lane_y - 40 if type == "air" else lane_y
-			var obs_x = obs_x_base + (i * (min_gap + 50))
-			
-			last_obs = obs
-			add_obs(obs, obs_x, obs_y)
+		var type = "air" if randf() < 0.4 else "ground"
+		if obstacles_by_lane[lane_name][type].size() == 0:
+			type = "air"
+		
+		var obs_type = obstacles_by_lane[lane_name][type][randi() % obstacles_by_lane[lane_name][type].size()]
+		var obs = obs_type.instantiate()
+		var obs_y = lane_y - 40 if type == "air" else lane_y
+		var obs_x = $Camera2D.position.x + 600
+		
+		last_obs = obs
+		add_obs(obs, obs_x, obs_y)
+	
+	cleanup_old_obs()
+
+
+#----------------- Eliminar obstáculos viejos
+func cleanup_old_obs():
+	for obs in obstacles:
+		if obs.position.x < $Camera2D.position.x - 300:
+			obstacles.erase(obs)
+			obs.queue_free()
+
 
 #----------------- Agregar obstáculo a la escena
 func add_obs(obs, x, y):
@@ -148,3 +149,30 @@ func add_obs(obs, x, y):
 	if obstacles.size() > max_obstacles:
 		var old = obstacles.pop_front()
 		old.queue_free()
+
+
+#----------------- Asegurar que cada carril tenga al menos un enemigo
+func ensure_enemies_per_lane():
+	var camera_x = $Camera2D.position.x
+	var visible_range = screen_size.x * 1.5  # rango visible
+	
+	for lane_name in lanes.keys():
+		var lane_y = lanes[lane_name]
+		
+		# Filtrar enemigos activos en ese carril
+		var lane_enemies = obstacles.filter(func(o):
+			return abs(o.position.y - lane_y) < 50 and o.position.x > camera_x - 100 and o.position.x < camera_x + visible_range
+		)
+		
+		# Si no hay enemigos, generar uno nuevo
+		if lane_enemies.size() == 0:
+			var type = "air" if randf() < 0.4 else "ground"
+			if obstacles_by_lane[lane_name][type].size() == 0:
+				type = "air"
+			
+			var obs_type = obstacles_by_lane[lane_name][type][randi() % obstacles_by_lane[lane_name][type].size()]
+			var obs = obs_type.instantiate()
+			var obs_y = lane_y - 40 if type == "air" else lane_y
+			var obs_x = camera_x + 400 + randi_range(0, 200)
+			
+			add_obs(obs, obs_x, obs_y)

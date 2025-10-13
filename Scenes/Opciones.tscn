@@ -77,12 +77,12 @@ theme_override_constants/h_separation = 30
 theme_override_constants/v_separation = 10
 columns = 2
 
-[node name="Label" type="Label" parent="Panel/ScrollContainer/BoxContainer/AjustesSonido/GridContainer"]
+[node name="GeneralLabel" type="Label" parent="Panel/ScrollContainer/BoxContainer/AjustesSonido/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_28310")
 text = "General"
 
-[node name="HSlider" type="HSlider" parent="Panel/ScrollContainer/BoxContainer/AjustesSonido/GridContainer"]
+[node name="GeneralHSlider" type="HSlider" parent="Panel/ScrollContainer/BoxContainer/AjustesSonido/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -91,12 +91,12 @@ theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_q5ffs")
 value = 20.0
 rounded = true
 
-[node name="Label3" type="Label" parent="Panel/ScrollContainer/BoxContainer/AjustesSonido/GridContainer"]
+[node name="MusicaLabel" type="Label" parent="Panel/ScrollContainer/BoxContainer/AjustesSonido/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_28310")
 text = "Musica"
 
-[node name="HSlider2" type="HSlider" parent="Panel/ScrollContainer/BoxContainer/AjustesSonido/GridContainer"]
+[node name="MusicaHSlider" type="HSlider" parent="Panel/ScrollContainer/BoxContainer/AjustesSonido/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -105,12 +105,12 @@ theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_7rfdi")
 value = 20.0
 rounded = true
 
-[node name="Label4" type="Label" parent="Panel/ScrollContainer/BoxContainer/AjustesSonido/GridContainer"]
+[node name="EfectosLabel" type="Label" parent="Panel/ScrollContainer/BoxContainer/AjustesSonido/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_28310")
 text = "Efectos"
 
-[node name="HSlider3" type="HSlider" parent="Panel/ScrollContainer/BoxContainer/AjustesSonido/GridContainer"]
+[node name="EfectosHSlider" type="HSlider" parent="Panel/ScrollContainer/BoxContainer/AjustesSonido/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -174,6 +174,30 @@ popup/item_1/id = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_28310")
 text = "Controles"
+
+[node name="GridContainer" type="GridContainer" parent="Panel/ScrollContainer/BoxContainer/Controles"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 536.0
+offset_bottom = 64.0
+theme_override_constants/h_separation = 185
+columns = 3
+
+[node name="AccionLabel" type="Label" parent="Panel/ScrollContainer/BoxContainer/Controles/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_28310")
+text = "Acción"
+
+[node name="ActualLabel" type="Label" parent="Panel/ScrollContainer/BoxContainer/Controles/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_28310")
+text = "Actual"
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/BoxContainer/Controles/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_28310")
+text = "Cambiar "
 
 [node name="AtrasButton" type="Button" parent="."]
 offset_left = 18.0
