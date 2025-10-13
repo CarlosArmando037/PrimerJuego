@@ -135,4 +135,4 @@ func _on_area_2d_area_entered(area):
 		
 	elif area.is_in_group("die instant"):
 		await get_tree().process_frame
-		get_tree().change_scene_to
+		get_tree().change_scene_to_file("res://game_over.tscn")
