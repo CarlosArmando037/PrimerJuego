@@ -327,16 +327,19 @@ shape = SubResource("RectangleShape2D_d2ncp")
 stream = ExtResource("7_ysgym")
 volume_db = -5.012
 pitch_scale = 0.95
+bus = &"SFX"
 
 [node name="RunSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_q3u65")
 volume_db = 21.565
+bus = &"Music"
 
 [node name="DoubleJumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ysgym")
 volume_db = -3.75
 pitch_scale = 1.6
 max_polyphony = 2
+bus = &"SFX"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
