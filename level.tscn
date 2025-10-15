@@ -17,7 +17,7 @@ position = Vector2(320, 181)
 
 [node name="jugador" parent="." instance=ExtResource("1_cybce")]
 position = Vector2(381, 280)
-collision_mask = 161
+collision_mask = 169
 invulnerable_time = 0.3
 knockback_time = 0.3
 
