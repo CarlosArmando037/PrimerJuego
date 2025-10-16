@@ -16,7 +16,16 @@ var dash_timer := 0.0
 var down_timer: float = 0.0   # controla el tiempo de espera
 
 
+#-----------------------------------------------------------------------DICCIONARIO DE ESTADISTICAS PARA ITEMS-----
+var estadisticas = {
+	"posicion":12,
+	"escudo":0,
+	"dinero":0
+}
+
 func _physics_process(delta):
+	
+
 	# --- DASH ---
 	if is_dashing:
 		velocity.y = 0
@@ -103,14 +112,19 @@ func _physics_process(delta):
 		else:
 			$AnimatedSprite2D.play("fall")
 	move_and_slide()
-	
+func mover_a_la_derecha(valor: float):
+		position.x += valor
+		
 
 @export var invulnerable_time: float = 1.0
 var invulnerable: bool = false # tiempo que retrocede e invulnerable
 @export var knockback_speed: float = -200
 @export var knockback_time: float = 0.3
 
+
 func _on_area_2d_area_entered(area):
+	
+	
 	if area.is_in_group("enemigos") and not invulnerable:
 		invulnerable = true
 		print("🔥 Detecté un enemigo con el Area2D")
@@ -136,3 +150,5 @@ func _on_area_2d_area_entered(area):
 	elif area.is_in_group("die instant"):
 		await get_tree().process_frame
 		get_tree().change_scene_to_file("res://game_over.tscn")
+
+		

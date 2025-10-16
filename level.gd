@@ -11,12 +11,15 @@ var lane_lower = preload("res://ground_down.tscn")
 var lane_middle = preload("res://ground_mid.tscn")
 var lane_upper = preload("res://ground_top.tscn")
 
+#-------------------- Precargar las escenas de items
+var item1 = preload("res://items/item_1.tscn")
+
 var lanes = {
 	"lower": 320,
 	"middle": 206,
 	"upper": 95
 }
-
+var items_scenes = [item1]
 var obstacles_by_lane = {
 	"lower": {
 		"ground": [spikes_scene, rino_scene],
@@ -34,11 +37,13 @@ var obstacles_by_lane = {
 
 #----------------- ProgressBAR
 @export var level_Lenght : int = 2000
-var progress : int = 0
+var progress : float = 0.0
 
 #---------------- Aparición de obstáculos
 @export var min_gap : int = 150
 @export var max_gap : int = 300
+
+@export var item_time = 25.0
 
 #---------------- GAME VARIABLES
 var score : int 
@@ -53,6 +58,7 @@ var screen_size : Vector2i
 var ground_height : int
 var game_running : bool
 
+var spawn_enemigos = true 
 var last_obs
 var obstacles : Array = []
 
@@ -63,24 +69,31 @@ func _ready():
 	new_game()
 
 func new_game():
-	score = 0
 	game_running = false
 	$jugador.velocity = Vector2i(0, 0)
+
+var items_spawned = false
 
 #----------------- PROCESS
 func _process(delta):
 	if game_running:
 		SPEED = START_SPEED
-		progress += SPEED
-		$HUD.get_node("ProgressBar").value = progress / 50
+		progress += SPEED * delta
+		$HUD.get_node("ProgressBar").value = progress
+		print(progress)
 		
+		if progress >= item_time and not items_spawned:
+			# Si quieres, puedes generar los items más lejos del jugador
+			print("agarre un item")
+			spawn_enemigos = false
+			spawn_items_for_all_lanes()
+			items_spawned = true
 		# Mover jugador, cámara y pared de muerte
 		$jugador.position.x += SPEED
 		$Camera2D.position.x += SPEED
-		$wall_die.position.x += SPEED
-		score += SPEED
-		
-		# generar obstáculos normalmente
+
+		$wall_die.position.x += SPEED		
+		# Generar obstáculos
 		generate_obs()
 		
 		# asegurar que todos los carriles tengan enemigos
@@ -112,25 +125,49 @@ func _process(delta):
 @export var max_spawn : int = 10
 @export var max_obstacles : int = 12
 
-func generate_obs():
-	if last_obs == null or last_obs.position.x < $Camera2D.position.x + randi_range(min_gap, max_gap):
-		var lane_keys = ["lower", "middle", "upper"]
-		var lane_name = lane_keys[randi() % lane_keys.size()]
+func enemies_on_screen() -> bool:
+	for obs in obstacles:
+		if obs.is_inside_tree():  # sigue en escena
+			return true
+	return false
+	
+func spawn_items_for_all_lanes():
+	var lane_keys = ["lower", "middle", "upper"]
+	
+	for lane_name in lane_keys:
+		# Elegir item al azar
+		var item_scene = items_scenes[randi() % items_scenes.size()]
+		var item = item_scene.instantiate()
 		var lane_y = lanes[lane_name]
 		
-		var type = "air" if randf() < 0.4 else "ground"
-		if obstacles_by_lane[lane_name][type].size() == 0:
-			type = "air"
+		# Generar el item más lejos del jugador
+		var item_x = $Camera2D.position.x + screen_size.x + 500
+		item.position = Vector2(item_x, lane_y)
 		
-		var obs_type = obstacles_by_lane[lane_name][type][randi() % obstacles_by_lane[lane_name][type].size()]
-		var obs = obs_type.instantiate()
-		var obs_y = lane_y - 40 if type == "air" else lane_y
-		var obs_x = $Camera2D.position.x + 600
+		add_child(item)
 		
-		last_obs = obs
-		add_obs(obs, obs_x, obs_y)
-	
-	cleanup_old_obs()
+func generate_obs():
+	if spawn_enemigos == true:
+		if last_obs == null or last_obs.position.x < $Camera2D.position.x + randi_range(min_gap, max_gap):
+			var lane_keys = ["lower", "middle", "upper"]
+			var lane_name = lane_keys[randi() % lane_keys.size()]
+			var lane_y = lanes[lane_name]
+			
+			var type = "air" if randf() < 0.4 else "ground"
+			if obstacles_by_lane[lane_name][type].size() == 0:
+				type = "air"
+			
+			var obs_type = obstacles_by_lane[lane_name][type][randi() % obstacles_by_lane[lane_name][type].size()]
+			var obs = obs_type.instantiate()
+			var obs_y = lane_y - 40 if type == "air" else lane_y
+			var obs_x = $Camera2D.position.x + 600
+			
+			last_obs = obs
+			add_obs(obs, obs_x, obs_y)
+		
+		cleanup_old_obs()
+	else:
+		pass
 
 
 #----------------- Eliminar obstáculos viejos
@@ -139,7 +176,6 @@ func cleanup_old_obs():
 		if obs.position.x < $Camera2D.position.x - 300:
 			obstacles.erase(obs)
 			obs.queue_free()
-
 
 #----------------- Agregar obstáculo a la escena
 func add_obs(obs, x, y):
