@@ -125,7 +125,6 @@ func _process(delta):
 @export var max_spawn : int = 10
 @export var max_obstacles : int = 12
 
-<<<<<<< HEAD
 func enemies_on_screen() -> bool:
 	for obs in obstacles:
 		if obs.is_inside_tree():  # sigue en escena
@@ -150,50 +149,25 @@ func spawn_items_for_all_lanes():
 func generate_obs():
 	if spawn_enemigos == true:
 		if last_obs == null or last_obs.position.x < $Camera2D.position.x + randi_range(min_gap, max_gap):
-			var count = randi_range(1, max_spawn)
-			var obs_x_base : int = screen_size.x + $Camera2D.position.x + min_gap
+			var lane_keys = ["lower", "middle", "upper"]
+			var lane_name = lane_keys[randi() % lane_keys.size()]
+			var lane_y = lanes[lane_name]
 			
-			for i in range(count):
-				# Elegir carril al azar
-				var lane_keys = ["lower", "middle", "upper"]
-				var lane_name = lane_keys[randi() % lane_keys.size()]
-				var lane_y = lanes[lane_name]
-				
-				# Elegir tipo de obstáculo
-				var type = "air" if randf() < 0.4 else "ground"
-				if obstacles_by_lane[lane_name][type].size() == 0:
-					type = "air"
-				
-				# Instanciar obstáculo
-				var obs_type = obstacles_by_lane[lane_name][type][randi() % obstacles_by_lane[lane_name][type].size()]
-				var obs = obs_type.instantiate()
-				var obs_y = lane_y - 40 if type == "air" else lane_y
-				var obs_x = obs_x_base + (i * (min_gap + 50))
-				
-				last_obs = obs
-				add_obs(obs, obs_x, obs_y)
+			var type = "air" if randf() < 0.4 else "ground"
+			if obstacles_by_lane[lane_name][type].size() == 0:
+				type = "air"
+			
+			var obs_type = obstacles_by_lane[lane_name][type][randi() % obstacles_by_lane[lane_name][type].size()]
+			var obs = obs_type.instantiate()
+			var obs_y = lane_y - 40 if type == "air" else lane_y
+			var obs_x = $Camera2D.position.x + 600
+			
+			last_obs = obs
+			add_obs(obs, obs_x, obs_y)
+		
+		cleanup_old_obs()
 	else:
 		pass
-=======
-func generate_obs():
-	if last_obs == null or last_obs.position.x < $Camera2D.position.x + randi_range(min_gap, max_gap):
-		var lane_keys = ["lower", "middle", "upper"]
-		var lane_name = lane_keys[randi() % lane_keys.size()]
-		var lane_y = lanes[lane_name]
-		
-		var type = "air" if randf() < 0.4 else "ground"
-		if obstacles_by_lane[lane_name][type].size() == 0:
-			type = "air"
-		
-		var obs_type = obstacles_by_lane[lane_name][type][randi() % obstacles_by_lane[lane_name][type].size()]
-		var obs = obs_type.instantiate()
-		var obs_y = lane_y - 40 if type == "air" else lane_y
-		var obs_x = $Camera2D.position.x + 600
-		
-		last_obs = obs
-		add_obs(obs, obs_x, obs_y)
-	
-	cleanup_old_obs()
 
 
 #----------------- Eliminar obstáculos viejos
@@ -202,8 +176,6 @@ func cleanup_old_obs():
 		if obs.position.x < $Camera2D.position.x - 300:
 			obstacles.erase(obs)
 			obs.queue_free()
-
->>>>>>> 67b16627d83bf063fb3e3f87f448dc2af56b329c
 
 #----------------- Agregar obstáculo a la escena
 func add_obs(obs, x, y):
